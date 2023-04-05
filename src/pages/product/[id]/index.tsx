@@ -1,8 +1,9 @@
+// import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { api } from 'y/utils/api';
 
 const ProductDetails = () => {
-  const { query, push } = useRouter();
+  const { query } = useRouter();
   const { data: product, isLoading, isError, error } = api.product.unique.useQuery({ id: String(query.id) });
   if (isLoading) return <p>Carregando os produtos</p>
   if (isError) return <p>Erro em carregar os produtos</p>
@@ -11,7 +12,7 @@ const ProductDetails = () => {
     <>
     {product?.name}
     {product?.price}
-    {product?.image}
+    {/* <Image src={product?.image} alt="" /> */}
     </>
   );
 };
